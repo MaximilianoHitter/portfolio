@@ -1,6 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+
+const req = await fetch("https://api.github.com/users/maximilianohitter/repos");
+const repos = await req.json();
+
+//console.log(repos);
 ---
 
 <Layout title="Welcome to my Portfolio">
@@ -9,7 +14,7 @@ import Card from "../components/Card.astro";
       class="border-opacity-55 rounded-full mt-5 border-slate-500 border-2"
       aria-label="general information about me"
     >
-      <div class="flex">
+      <!-- <div class="flex">
         <div class="flex justify-start">
           <img
             src="https://avatars.githubusercontent.com/u/89142014?v=4"
@@ -19,14 +24,28 @@ import Card from "../components/Card.astro";
           />
         </div>
         <h4
-          class="flex justify-end ml-7 flex-col font-semibold text-xl bg-red-500"
+          class="flex justify-end ml-7 font-semibold text-xl bg-red-500"
         >
           <span class="mt-0">Hi! Im Maximiliano</span>
           <span class="mt-0">I'm Electronic Technician and Web Developer</span>
         </h4>
-      </div>
+      </div> -->
+    </section>
+
+    <section>
+      {
+        repos.map((rp: any) => [
+          <Card
+            title={rp.name}
+            body=""
+            href={"https://github.com/" + rp.full_name}
+          />,
+        ])
+      }
     </section>
   </main>
+
+  <script></script>
 
   <style>
     main {
