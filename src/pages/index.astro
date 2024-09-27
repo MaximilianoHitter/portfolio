@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import Badge from "../components/Badge.astro";
 
 const req = await fetch("https://api.github.com/users/maximilianohitter/repos");
 const repos = await req.json();
@@ -10,38 +11,14 @@ const repos = await req.json();
 
 <Layout title="Welcome to my Portfolio">
   <main>
-    <section
-      class="border-opacity-55 rounded-full mt-5 border-slate-500 border-2"
-      aria-label="general information about me"
-    >
-      <!-- <div class="flex">
-        <div class="flex justify-start">
-          <img
-            src="https://avatars.githubusercontent.com/u/89142014?v=4"
-            alt=""
-            class="w-20 object-cover rounded-full"
-            loading="lazy"
-          />
-        </div>
-        <h4
-          class="flex justify-end ml-7 font-semibold text-xl bg-red-500"
-        >
-          <span class="mt-0">Hi! Im Maximiliano</span>
-          <span class="mt-0">I'm Electronic Technician and Web Developer</span>
-        </h4>
-      </div> -->
-    </section>
-
     <section>
-      {
-        repos.map((rp: any) => [
-          <Card
-            title={rp.name}
-            body=""
-            href={"https://github.com/" + rp.full_name}
-          />,
-        ])
-      }
+      <h1 class="text-white">
+        Hey, I'm Maximiliano Ariel Hitter <Badge>Currently working</Badge>
+      </h1>
+      <h2>
+        Electronic Technician. Web Developer with 2 years expertise. Currently
+        based in Neuquén, Argentina
+      </h2>
     </section>
   </main>
 

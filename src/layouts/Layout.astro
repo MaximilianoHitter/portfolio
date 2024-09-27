@@ -1,5 +1,6 @@
 ---
-
+import Header from "../components/Header.astro";
+import "@fontsource/poppins";
 ---
 
 <!doctype html>
@@ -12,35 +13,22 @@
     <meta name="generator" content={Astro.generator} />
     <title>Maximiliano Ariel Hitter's Portfolio</title>
   </head>
-  <body>
+  <body class="">
+    <div class="flex justify-center">
+      <Header />
+    </div>
     <slot />
   </body>
 </html>
 <style is:global>
   :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
+    color-scheme: ligth dark;
   }
   html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
+    font-family: "Poppins", system-ui, sans-serif;
   }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
+  body {
+    background: #13151a;
+    min-height: 100vh;
   }
 </style>
