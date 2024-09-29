@@ -1,22 +1,135 @@
 <header
-  class="flex justify-center items-center gap-10 py-3 w-[900px] mt-5 border-slate-500 border-2 rounded-full"
+  class="flex
+  justify-around
+  items-center
+  gap-10
+  py-3
+  w-[900px]
+  mt-5
+  border-slate-500
+  md:justify-center
+  rounded-full"
 >
   <img
-    class="rounded-full w-12 h-12"
+    class="rounded-full w-12 h-12 transform transition duration-300 hover:rotate-minus20"
     src="https://avatars.githubusercontent.com/u/89142014?v=4"
-    alt="Photo from Github"
+    alt="from Github's profile"
+    id="avatar"
   />
 
-  <nav class="flex flex-row gap-x-10 opacity-90 justify-center">
-    <a class="hover:underline hover:opacity-100 opacity-60" href="/">Home</a>
-    <a class="hover:underline hover:opacity-100 opacity-60" href="/about"
-      >About</a
+  <nav class="relative">
+    <div class="md:hidden flex justify-between items-center p-4">
+      <button
+        id="menu-btn"
+        class="block hamburger md:hidden focus:outline-none color-white"
+      >
+        <span class="hamburger-top color-white bg-white"></span>
+        <span class="hamburger-middle color-white bg-white"></span>
+        <span class="hamburger-bottom color-white bg-white"></span>
+      </button>
+    </div>
+
+    <!-- Menú -->
+    <div
+      id="menu"
+      class="hidden md:flex flex-row gap-x-10 opacity-90 justify-center p-4"
     >
-    <a class="hover:underline hover:opacity-100 opacity-60" href="/proyects"
-      >Proyects</a
-    >
-    <a class="hover:underline hover:opacity-100 opacity-60" href="/contact"
-      >Contact</a
-    >
+      <a
+        class="hover:underline hover:opacity-100 opacity-80 transform transition duration-300 hover:rotate-plus20"
+        href="/">Home</a
+      >
+      <a
+        class="hover:underline hover:opacity-100 opacity-80 transform transition duration-300 hover:rotate-minus20"
+        href="/about">About</a
+      >
+      <a
+        class="hover:underline hover:opacity-100 opacity-80 transform transition duration-300 hover:rotate-plus20"
+        href="/proyects">Proyects</a
+      >
+      <a
+        class="hover:underline hover:opacity-100 opacity-80 transform transition duration-300 hover:rotate-minus20"
+        href="/contact">Contact</a
+      >
+    </div>
   </nav>
 </header>
+
+<script>
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("menu");
+  const avatar = document.getElementById("avatar");
+
+  btn?.addEventListener("click", () => {
+    btn.classList.toggle("open");
+    menu?.classList.toggle("hidden");
+    menu?.classList.toggle("flex");
+    avatar?.classList.toggle("hidden");
+  });
+</script>
+
+<style>
+  header {
+    /* background-color: #23262d; */
+    /* transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1); */
+    /* box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1); */
+  }
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    background: #000;
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Animación del icono cuando el menú está abierto */
+  .open .hamburger-top {
+    transform: rotate(45deg);
+    position: relative;
+    top: 8px;
+  }
+
+  .open .hamburger-middle {
+    opacity: 0;
+  }
+
+  .open .hamburger-bottom {
+    transform: rotate(-45deg);
+    position: relative;
+    top: -8px;
+  }
+
+  #menu-btn > button,
+  #menu-btn > span {
+    background: white;
+    color: white;
+  }
+</style>
+
+<style>
+  .link-card {
+    list-style: none;
+    display: flex;
+    padding: 1px;
+    background-color: #23262d;
+    background-image: none;
+    border-radius: 7px;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  .link-card > a {
+    width: fit-content;
+    text-decoration: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #23262d;
+    opacity: 0.8;
+  }
+  .link-card:is(:hover, :focus-within) {
+    background-position: 0;
+    background-image: var(--accent-gradient);
+  }
+  .link-card:is(:hover, :focus-within) h2 {
+    color: rgb(var(--accent-light));
+  }
+</style>

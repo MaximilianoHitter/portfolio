@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import Badge from "../components/Badge.astro";
+import Redes from "../components/Redes.astro";
+import Experiencia from "../components/Experiencia.astro";
+import Tabs from "../components/Tabs.astro";
 
 const req = await fetch("https://api.github.com/users/maximilianohitter/repos");
 const repos = await req.json();
@@ -9,20 +11,37 @@ const repos = await req.json();
 //console.log(repos);
 ---
 
-<Layout title="Welcome to my Portfolio">
+<Layout title="Maximiliano Hitter's Portfolio - Web Developer">
   <main>
-    <section>
-      <h1 class="text-white">
-        Hey, I'm Maximiliano Ariel Hitter <Badge>Currently working</Badge>
+    <section class="w-full mx-auto mt-4">
+      <h1
+        class="text-white flex-wrap text-4xl font-bold flex justify-center gap-2"
+      >
+        Hey, I'm Maximiliano Ariel Hitter
+        <Badge>Currently working!</Badge>
       </h1>
-      <h2>
-        Electronic Technician. Web Developer with 2 years expertise. Currently
-        based in Neuquén, Argentina
+      <h2 class="mt-8 text-wrap">
+        Web Developer with 2 years expertise. Currently based in Neuquén,
+        Argentina <img
+          class="inline rounded-sm"
+          src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg"
+          alt="Argentine Flag"
+          width="20"
+          height="13"
+        /> . I specialize into back-end. Also work with front-end and a little with
+        devops things. Currently studying Bachelor's Degree in Computer Security
+        at Siglo21 University.
       </h2>
+
+      <div class="flex justify-center">
+        <Redes />
+      </div>
+
+      <!-- <Experiencia /> -->
+
+      <Tabs />
     </section>
   </main>
-
-  <script></script>
 
   <style>
     main {
@@ -30,26 +49,11 @@ const repos = await req.json();
       padding: 1rem;
       width: 800px;
       max-width: calc(100% - 2rem);
-      color: white;
+      /* color: white; */
       font-size: 20px;
       line-height: 1.6;
     }
-    .astro-a {
-      position: absolute;
-      top: -32px;
-      left: 50%;
-      transform: translatex(-50%);
-      width: 220px;
-      height: auto;
-      z-index: -1;
-    }
-    h1 {
-      font-size: 4rem;
-      font-weight: 700;
-      line-height: 1;
-      text-align: center;
-      margin-bottom: 1em;
-    }
+
     .text-gradient {
       background-image: var(--accent-gradient);
       -webkit-background-clip: text;
@@ -77,12 +81,6 @@ const repos = await req.json();
     }
     .instructions strong {
       color: rgb(var(--accent-light));
-    }
-    .link-card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-      gap: 2rem;
-      padding: 0;
     }
   </style>
 </Layout>

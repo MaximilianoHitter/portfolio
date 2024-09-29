@@ -1,0 +1,113 @@
+---
+import Estudios from "./Estudios.astro";
+import Experiencia from "./Experiencia.astro";
+import Book from "./icons/Book.astro";
+import Tech from "./icons/Tech.astro";
+import Work from "./icons/Work.astro";
+import Tecnologias from "./Tecnologias.astro";
+---
+
+<hr class="mt-7 w-[60%] mx-auto" />
+<div class="tabs mt-7 flex flex-col gap-3">
+  <ul class="flex gap-3 mx-auto flex-row flex-wrap">
+    <li class="link-card group">
+      <a
+        class="tab-button w-full px-2 gap-2 cursor-pointer flex justify-center flex-row items-center rounded-full py-1 h-fit text-sm border-slate-600 border-2"
+        data-tab="1"
+      >
+        <Tech />
+        Technologies</a
+      >
+    </li>
+    <li class="link-card group">
+      <a
+        class="tab-button w-full px-2 gap-2 cursor-pointer flex justify-center flex-row items-center rounded-full py-1 h-fit text-sm border-slate-600 border-2"
+        data-tab="2"
+      >
+        <Work />
+        Works
+      </a>
+    </li>
+    <li class="link-card group">
+      <a
+        class="tab-button w-full px-2 gap-2 cursor-pointer flex justify-center flex-row items-center rounded-full py-1 h-fit text-sm border-slate-600 border-2"
+        data-tab="3"
+      >
+        <Book />
+        Studies
+      </a>
+    </li>
+  </ul>
+
+  <div class="border-t-2 border-slate-600 rounded-lg p-2 w-fit mx-auto">
+    <div class="tab-content mt-4" id="tab-1">
+      <Tecnologias />
+    </div>
+    <div class="tab-content mt-4 hidden" id="tab-2">
+      <Experiencia />
+    </div>
+    <div class="tab-content mt-4 hidden" id="tab-3">
+      <Estudios />
+    </div>
+  </div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll(".tab-button");
+  const contents = document.querySelectorAll(".tab-content");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", function () {
+      //@ts-ignore
+      const target = this.dataset.tab;
+
+      // Remover clase activa de todos los botones
+      tabs.forEach((t) => t.classList.remove("active"));
+      // Añadir clase activa al botón clicado
+      //@ts-ignore
+      this.classList.add("active");
+
+      // Esconder todo el contenido
+      contents.forEach((content) => content.classList.add("hidden"));
+      // Mostrar el contenido correspondiente
+      document.getElementById(`tab-${target}`)?.classList.remove("hidden");
+    });
+  });
+</script>
+
+<style>
+  .hidden {
+    display: none;
+  }
+
+  .active {
+    font-weight: bold;
+    color: blue;
+  }
+  .link-card {
+    list-style: none;
+    display: flex;
+    padding: 1px;
+    background-color: #23262d;
+    background-image: none;
+    border-radius: 7px;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  .link-card > a {
+    /* width: fit-content; */
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #23262d;
+    opacity: 0.8;
+  }
+  .link-card:is(:hover, :focus-within) {
+    background-position: 0;
+    background-image: var(--accent-gradient);
+  }
+  .link-card:is(:hover, :focus-within) h2 {
+    color: rgb(var(--accent-light));
+  }
+</style>

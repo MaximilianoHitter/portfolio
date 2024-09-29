@@ -1,0 +1,77 @@
+---
+import Github from "./icons/Github.astro";
+import Linkedin from "./icons/Linkedin.astro";
+import Email from "./icons/Email.astro";
+import Linktree from "./icons/Linktree.astro";
+---
+
+<ul class="mt-6 flex flex-row gap-3 flex-wrap">
+  <li class="link-card group">
+    <a
+      class="gap-2 cursor-pointer flex justify-center flex-row items-center rounded-full px-1 py-1 w-fit h-fit text-sm border-slate-600 border-2"
+      href="https://github.com/MaximilianoHitter"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Github /> Github
+    </a>
+  </li>
+  <li class="link-card group">
+    <a
+      class="gap-2 cursor-pointer flex justify-center flex-row items-center rounded-full px-1 py-1 w-fit h-fit text-sm border-slate-600 border-2"
+      href="https://www.linkedin.com/in/maximiliano-ariel-hitter-4aa560b8/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Linkedin /> LinkedIn
+    </a>
+  </li>
+  <li class="link-card group">
+    <a
+      class="gap-2 cursor-pointer flex justify-center flex-row items-center rounded-full px-1 py-1 w-fit h-fit text-sm border-slate-600 border-2"
+      href="mailto:maxih94@hotmail.com"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Email /> maxih94@hotmail.com
+    </a>
+  </li>
+  <li class="link-card group">
+    <a
+      class="gap-2 cursor-pointer flex justify-center flex-row items-center rounded-full px-1 py-1 w-fit h-fit text-sm border-slate-600 border-2"
+      href="https://linktr.ee/maxih94"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Linktree /> Linktree
+    </a>
+  </li>
+</ul>
+
+<style>
+  .link-card {
+    list-style: none;
+    display: flex;
+    padding: 1px;
+    background-color: #23262d;
+    background-image: none;
+    border-radius: 7px;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  .link-card > a {
+    width: fit-content;
+    text-decoration: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #23262d;
+    opacity: 0.8;
+  }
+  .link-card:is(:hover, :focus-within) {
+    background-position: 0;
+    background-image: var(--accent-gradient);
+  }
+  .link-card:is(:hover, :focus-within) h2 {
+    color: rgb(var(--accent-light));
+  }
+</style>
