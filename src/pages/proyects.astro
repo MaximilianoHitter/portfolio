@@ -1,0 +1,81 @@
+---
+import Arrow from "../components/icons/Arrow.astro";
+import LanguageBadge from "../components/LanguageBadge.astro";
+import Layout from "../layouts/Layout.astro";
+
+const req = await fetch("https://api.github.com/users/maximilianohitter/repos");
+const repos = await req.json();
+---
+
+<Layout title="Maximiliano Hitter's Portfolio - Projects">
+  <main>
+    <section class="w-full mx-auto mt-4">
+      <h1
+        class="text-white flex-wrap text-4xl font-bold flex justify-center gap-2"
+      >
+        Projects
+      </h1>
+      <ol
+        class="relative border-s border-gray-200 dark:border-gray-700 mt-3 mx-auto w-fit"
+      >
+        {
+          repos.map((item: any) => {
+            return (
+              <li class="mb-5 ms-4 link-card flex gap-2 flex-col">
+                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-2 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700" />
+                <a
+                  href={item.html_url}
+                  class="gap-2 cursor-pointer group flex h-fit justify-center flex-row items-center py-auto rounded-full px-1 text-sm border-slate-600 border-2"
+                >
+                  {item.name} &nbsp; <LanguageBadge language={item.language} />{" "}
+                  &nbsp; <Arrow />
+                </a>
+
+                {item.description != null
+                  ? item.description
+                  : "Without description"}
+              </li>
+            );
+          })
+        }
+      </ol>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    /* color: white; */
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  .link-card {
+    list-style: none;
+    display: flex;
+    padding: 1px;
+    /* background-color: #23262d; */
+    background-image: none;
+    /* border-radius: 7px; */
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    /* box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1); */
+  }
+  .link-card > a {
+    width: fit-content;
+    text-decoration: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #23262d;
+    opacity: 0.8;
+  }
+  .link-card:is(:hover, :focus-within) {
+    background-position: 0;
+    background-image: var(--accent-gradient);
+  }
+  .link-card:is(:hover, :focus-within) h2 {
+    color: rgb(var(--accent-light));
+  }
+</style>

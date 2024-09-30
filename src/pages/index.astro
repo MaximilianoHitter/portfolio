@@ -2,13 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Badge from "../components/Badge.astro";
 import Redes from "../components/Redes.astro";
-import Experiencia from "../components/Experiencia.astro";
 import Tabs from "../components/Tabs.astro";
-
-const req = await fetch("https://api.github.com/users/maximilianohitter/repos");
-const repos = await req.json();
-
-//console.log(repos);
 ---
 
 <Layout title="Maximiliano Hitter's Portfolio - Web Developer">
